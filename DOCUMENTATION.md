@@ -3,11 +3,18 @@ Christopher Hahn
 Timo Raschke  
 Khaled Reguieg
 
-# Projektbeschreibung
+# Inhaltsverzeichnis
+1. [Projektbeschreibung](#desc)
+2. [Projektziele](#goals)
+3. [Projektverlauf](#runnning)
+4. [Ausblick](#outlook)
+5. [Fazit](#conclusion)
 
-# Projektziele
+# Projektbeschreibung<a name="desc"></a>
 
-# Projektverlauf
+# Projektziele<a name="goals"></a>
+
+# Projektverlauf<a name="running"></a>
 
 ## Entwicklungsumgebung
 
@@ -24,6 +31,6 @@ Die benötigten Python-Pakete sind in der `requirements.txt` im Unterverzeichnis
 
 ## Implementierung
 
-# Ausblick
+# Ausblick<a name="outlook"></a>
 
-# Fazit
+# Fazit<a name="conclusion"></a>
