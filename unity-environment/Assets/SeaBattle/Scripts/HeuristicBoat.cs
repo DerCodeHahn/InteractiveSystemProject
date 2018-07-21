@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MLAgents;
+using System;
 
 public class HeuristicBoat : MonoBehaviour, Decision
 {
+	[SerializeField] private float shootRange;
 	struct DirectionPair{
 		public Vector2 direction;
 		public int indexKey2;
@@ -33,15 +35,40 @@ public class HeuristicBoat : MonoBehaviour, Decision
     public float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         targetDirection = new Vector2(vectorObs[0], vectorObs[1]); // targetDirection
-
 		float[] action = new float[3];
-		DirectionPair pair = FindBestDirection(targetDirection);
-		
-		action[0] = pair.indexKey1;
-		action[1] = pair.indexKey2;
+		if(targetDirection.magnitude >= shootRange)
+		{
+			MoveToTarget(ref action, targetDirection);
+		}
+		else{
+			ShootAtTarget(ref action);
+		}
 
 		return action;
     }
+	Vector3 tangent;
+    private void ShootAtTarget(ref float[] action)
+    {
+        Vector3 targetDirectionV3 = new Vector3(targetDirection.x, 0, targetDirection.y); 
+		tangent = Vector3.Cross(targetDirectionV3, Vector3.up);
+		action[2] = 1;
+		if(Vector3.Angle(targetDirectionV3, tangent) > Vector3.Angle(targetDirectionV3, tangent))
+		{
+			tangent *= -1;
+			action[2] *=-1;
+		}
+		Vector2 v2Tangent = new Vector2(tangent.x,tangent.z);
+		MoveToTarget(ref action,  v2Tangent);
+
+
+    }
+
+    void MoveToTarget(ref float[] action, Vector2 direction){
+		DirectionPair pair = FindBestDirection(direction);
+			
+		action[0] = pair.indexKey1;
+		action[1] = pair.indexKey2;
+	}
 
 	DirectionPair FindBestDirection(Vector2 direction){
 		float bestAngle = Mathf.Infinity;
@@ -57,14 +84,18 @@ public class HeuristicBoat : MonoBehaviour, Decision
 		}
 		return bestPair;
 	}
-
+	//List>float> emptyList = new List<float>();
     public List<float> MakeMemory(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
-        return new List<float>();
+        return null ;
     }
 
 	private void OnDrawGizmos() {
 		Vector3 pos = new Vector3(targetDirection.x, 0, targetDirection.y);
+		Gizmos.color = Color.blue;
 		Gizmos.DrawLine(transform.position,transform.position+(pos));
+		Gizmos.color = Color.red;
+		Gizmos.DrawLine(transform.position,(transform.position+(tangent)).normalized);
+
 	}
 }
