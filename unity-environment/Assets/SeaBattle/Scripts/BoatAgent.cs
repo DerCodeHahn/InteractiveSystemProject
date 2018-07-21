@@ -61,13 +61,13 @@ public class BoatAgent : Agent
     //Adds 4 observeration floats
     void AddPositionAndVelocityObservervation(GameObject traget)
     {
-        Vector3 targetDirection = V3toV2(traget.transform.position - transform.position);
+        Vector3 targetDirection = traget.transform.position - transform.position;
         AddVectorObs(V3toV2(targetDirection));
         AddVectorObs(V3toV2(traget.GetComponent<Rigidbody>().velocity));
     }
 
     Vector2 V3toV2(Vector3 v3){
-        return new Vector2(v3.x,v3.y);
+        return new Vector2(v3.x,v3.z);
     }
 
     void OnTriggerEnter(Collider col)
@@ -79,6 +79,7 @@ public class BoatAgent : Agent
             seaManager.GetOther(this).score++;
             seaManager.Reset();
         }
+        
     }
 
 
