@@ -7,6 +7,10 @@ public class SeaManager : MonoBehaviour {
 	private BoatAgent[] boatAgents = new BoatAgent[2];
     public float spawnRadius = 0.5f;
 
+    public List<GameObject> CannonBalls;
+
+    int generation = 0;
+
     public BoatAgent[] BoatAgents
     {
         get
@@ -27,12 +31,20 @@ public class SeaManager : MonoBehaviour {
 	}
 
     public void Reset(){
+
+        generation++;
         foreach (BoatAgent boatAgent in boatAgents)
         {
+            boatAgent.Done();
             boatAgent.transform.position = Vector3.zero;
             Vector2 rnd = Random.insideUnitCircle * spawnRadius;
             boatAgent.transform.position += new Vector3(rnd.x,0,rnd.y);
         }
+    }
+    void OnGUI() {
+        GUILayout.Label("Generation " + generation);
+        GUILayout.Label("Agent1 Score: " + boatAgents[0].score);
+        GUILayout.Label("Agent2 Score: " + boatAgents[1].score);
     }
 
     public BoatAgent GetOther(BoatAgent agent){
@@ -41,4 +53,31 @@ public class SeaManager : MonoBehaviour {
         else
             return boatAgents[0];
     }
+
+    public GameObject GetNexCannonball(BoatAgent boatAgent)
+    {
+        float minDistance = Mathf.Infinity;
+        GameObject closest = null;
+        foreach(GameObject cannonball in CannonBalls)
+        {
+            if(cannonball == null)
+                continue;
+
+            float dist = Vector3.Distance(cannonball.transform.position, boatAgent.transform.position);
+            if(dist < minDistance)
+            {
+                dist = minDistance;
+                closest = cannonball;
+            }
+        }
+        if(closest == null)
+            return boatAgent.gameObject;
+        return closest;
+    }
+
+    void FixedUpdate()
+    {
+        CannonBalls.RemoveAll(item => item == null);
+    }
+
 }
