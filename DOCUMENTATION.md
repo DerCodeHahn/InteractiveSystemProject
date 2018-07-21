@@ -18,7 +18,7 @@ Khaled Reguieg
 
 ## Entwicklungsumgebung
 
-### Installtion
+### Installation
 Unitys ml-agents Framework ist einfach einzurichten. Zu den Abhängigkeiten zählen unter anderem:
 * Unity 2017.1 oder neuer
 * Python 3
