@@ -225,7 +225,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4505136856691652, guid: 52f64e5e05b512f4498d041bfaa7ec2c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4505136856691652, guid: 52f64e5e05b512f4498d041bfaa7ec2c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -486,7 +486,7 @@ MonoBehaviour:
     - 
     vectorActionSpaceType: 1
     vectorObservationSpaceType: 1
-  brainType: 3
+  brainType: 2
   CoreBrains:
   - {fileID: 275663925}
   - {fileID: 78052758}
@@ -1376,7 +1376,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4505136856691652, guid: 52f64e5e05b512f4498d041bfaa7ec2c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4505136856691652, guid: 52f64e5e05b512f4498d041bfaa7ec2c, type: 2}
       propertyPath: m_LocalPosition.y

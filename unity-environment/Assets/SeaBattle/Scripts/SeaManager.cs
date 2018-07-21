@@ -5,7 +5,7 @@ using UnityEngine;
 public class SeaManager : MonoBehaviour {
 
 	private BoatAgent[] boatAgents = new BoatAgent[2];
-    public float spawnRadius = 0.5f;
+    public float spawnRadius = 0.1f;
 
     public List<GameObject> CannonBalls;
 
@@ -40,6 +40,9 @@ public class SeaManager : MonoBehaviour {
             Vector2 rnd = Random.insideUnitCircle * spawnRadius;
             boatAgent.transform.position += new Vector3(rnd.x,0,rnd.y);
         }
+        if(spawnRadius <= 0.5f)
+            spawnRadius += 0.01f;
+
     }
     void OnGUI() {
         GUILayout.Label("Generation " + generation);
