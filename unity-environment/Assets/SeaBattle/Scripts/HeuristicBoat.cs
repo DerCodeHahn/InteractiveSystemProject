@@ -7,6 +7,10 @@ using System;
 public class HeuristicBoat : MonoBehaviour, Decision
 {
 	[SerializeField] private float shootRange;
+	
+	[SerializeField] private float EvadeAngle;
+	Color modus;
+
 	struct DirectionPair{
 		public Vector2 direction;
 		public int indexKey2;
@@ -32,21 +36,45 @@ public class HeuristicBoat : MonoBehaviour, Decision
 		directionPair[7] = new DirectionPair(Vector2.left + Vector2.up	, 1, -1);
 	}
 	Vector2 targetDirection;
+	Vector2 cannonballDirection;
     public float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         targetDirection = new Vector2(vectorObs[0], vectorObs[1]); // targetDirection
 		float[] action = new float[3];
-		if(targetDirection.magnitude >= shootRange)
+		cannonballDirection = new Vector2(vectorObs[4], vectorObs[5]);
+		Vector2 cannonBallVelocity = new Vector2(vectorObs[6], vectorObs[7]);
+		
+		if(cannonballDirection.magnitude >= 0.1f && Vector2.Angle(-cannonballDirection, cannonBallVelocity) <= EvadeAngle)
+		{
+			EvadeCannonball(ref action);
+			modus = Color.red;
+		}
+		else if(targetDirection.magnitude >= shootRange)
 		{
 			MoveToTarget(ref action, targetDirection);
+			modus = Color.green;
 		}
 		else{
 			ShootAtTarget(ref action);
+			modus = Color.yellow;
 		}
 
 		return action;
     }
-	Vector3 tangent;
+
+    private void EvadeCannonball(ref float[] action)
+    {
+        Vector3 targetDirectionV3 = new Vector3(cannonballDirection.x, 0, cannonballDirection.y); 
+		Vector3 cannonBallTangent = Vector3.Cross(targetDirectionV3, Vector3.up);
+		Vector2 v2Tangent = new Vector2(cannonBallTangent.x,cannonBallTangent.z);
+
+		if(Vector3.Angle(targetDirectionV3, cannonBallTangent) < Vector3.Angle(targetDirectionV3, -cannonBallTangent))
+			v2Tangent *= -1;
+
+		MoveToTarget(ref action,  v2Tangent);
+    }
+
+    Vector3 tangent;
     private void ShootAtTarget(ref float[] action)
     {
         Vector3 targetDirectionV3 = new Vector3(targetDirection.x, 0, targetDirection.y); 
@@ -89,8 +117,10 @@ public class HeuristicBoat : MonoBehaviour, Decision
     {
         return null ;
     }
-
+	
 	private void OnDrawGizmos() {
+		Gizmos.color = modus;
+		Gizmos.DrawSphere(transform.position, 0.5f);
 		Vector3 pos = new Vector3(targetDirection.x, 0, targetDirection.y);
 		Gizmos.color = Color.blue;
 		Gizmos.DrawLine(transform.position,transform.position+(pos));

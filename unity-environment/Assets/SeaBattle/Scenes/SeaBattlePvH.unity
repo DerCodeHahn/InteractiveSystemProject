@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootRange: 5
+  EvadeAngle: 10
 --- !u!1 &496530716
 GameObject:
   m_ObjectHideFlags: 0
