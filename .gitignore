@@ -35,3 +35,7 @@ sysinfo.txt
 *.apk
 *.unitypackage
 unity-environment/Assets/VSCode/
+models/
+summaries/
+python/
+unity-environment/unity-environment.log
