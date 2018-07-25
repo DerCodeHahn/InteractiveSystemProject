@@ -39,6 +39,7 @@ public class BoatAgent : Agent
         {
             GameObject ccc = Instantiate(canonBall, transform.position, Quaternion.identity);
 			ccc.GetComponent<Rigidbody>().AddForce(transform.right * shootDirection * canonBallSpeed);
+            ccc.GetComponent<BallOwner>().BoatAgent = this;
             seaManager.CannonBalls.Add(ccc);
             Physics.IgnoreCollision(GetComponent<Collider>(), ccc.GetComponent<Collider>());
             Destroy(ccc,0.5f);
