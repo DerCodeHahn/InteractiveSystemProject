@@ -21,6 +21,12 @@ default:
     curiosity_strength: 0.01
     curiosity_enc_size: 128
 
+SeaBattleStudentBrain:
+    trainer: imitation
+    brain_to_imitate: SeaBattleTeacherBrain
+    batch_size: 1024
+    batches_per_epoch: 5
+
 BananaBrain:
     normalize: false
     batch_size: 1024
