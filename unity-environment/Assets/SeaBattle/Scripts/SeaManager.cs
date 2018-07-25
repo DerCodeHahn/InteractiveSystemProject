@@ -36,12 +36,16 @@ public class SeaManager : MonoBehaviour {
         foreach (BoatAgent boatAgent in boatAgents)
         {
             boatAgent.Done();
-            boatAgent.transform.position = Vector3.zero;
+            boatAgent.transform.localPosition = Vector3.zero;
             Vector2 rnd = Random.insideUnitCircle * spawnRadius;
-            boatAgent.transform.position += new Vector3(rnd.x,0,rnd.y);
+            boatAgent.transform.localPosition += new Vector3(rnd.x,0,rnd.y);
         }
+        foreach (GameObject canonball in CannonBalls)
+            Destroy(canonball);
+        CannonBalls.Clear();
+
         if(spawnRadius <= 0.5f)
-            spawnRadius += 0.01f;
+            spawnRadius += 0.000001f;
 
     }
     void OnGUI() {

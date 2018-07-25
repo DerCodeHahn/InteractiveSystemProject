@@ -7,7 +7,7 @@ public class SeaBattleAcademy : Academy {
 	[SerializeField]SeaManager seaManager;
 	public override void AcademyReset ()
 	{
-		seaManager.Reset();
+		//seaManager.Reset();
 	}
 
 	public override void AcademyStep()
