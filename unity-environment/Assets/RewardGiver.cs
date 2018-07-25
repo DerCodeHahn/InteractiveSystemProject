@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RewardGiver : MonoBehaviour {
+	public float reward;
 	void OnTriggerEnter(Collider col)
 	{
 		BoatAgent ba = col.GetComponent<BoatAgent>();
@@ -10,7 +11,7 @@ public class RewardGiver : MonoBehaviour {
 		{
 			if(ba != GetComponentInParent<BoatAgent>())
 			{
-				ba.AddReward(0.01f);
+				ba.AddReward(reward);
 			}
 		}
 	}
