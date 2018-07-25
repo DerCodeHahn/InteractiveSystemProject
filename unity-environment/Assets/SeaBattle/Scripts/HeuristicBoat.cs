@@ -40,16 +40,20 @@ public class HeuristicBoat : MonoBehaviour, Decision
     public float[] Decide(List<float> vectorObs, List<Texture2D> visualObs, float reward, bool done, List<float> memory)
     {
         targetDirection = new Vector2(vectorObs[0], vectorObs[1]); // targetDirection
-		float[] action = new float[3];
-		cannonballDirection = new Vector2(vectorObs[4], vectorObs[5]);
-		Vector2 cannonBallVelocity = new Vector2(vectorObs[6], vectorObs[7]);
-		
-		if(cannonballDirection.magnitude >= 0.1f && Vector2.Angle(-cannonballDirection, cannonBallVelocity) <= EvadeAngle)
+        float targetDist = vectorObs[2];
+        float[] action = new float[3];
+
+		cannonballDirection = new Vector2(vectorObs[5], vectorObs[6]);
+        float cannonballDistance = vectorObs[7];
+        Vector2 cannonBallVelocity = new Vector2(vectorObs[8], vectorObs[9]);
+        
+
+        if (cannonballDistance >= 0.1f && Vector2.Angle(-cannonballDirection, cannonBallVelocity) <= EvadeAngle)
 		{
 			EvadeCannonball(ref action);
 			modus = Color.red;
 		}
-		else if(targetDirection.magnitude >= shootRange)
+		else if(targetDist >= shootRange)
 		{
 			MoveToTarget(ref action, targetDirection);
 			modus = Color.green;
