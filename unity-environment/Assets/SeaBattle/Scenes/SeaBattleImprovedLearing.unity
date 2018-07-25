@@ -506,7 +506,7 @@ MonoBehaviour:
     width: 80
     height: 80
     qualityLevel: 1
-    timeScale: 1
+    timeScale: 100
     targetFrameRate: -1
   inferenceConfiguration:
     width: 1280
@@ -658,7 +658,7 @@ MonoBehaviour:
     - 
     vectorActionSpaceType: 1
     vectorObservationSpaceType: 1
-  brainType: 2
+  brainType: 3
   CoreBrains:
   - {fileID: 2013874331}
   - {fileID: 1903306442}
@@ -1322,7 +1322,7 @@ Prefab:
         type: 2}
       propertyPath: brain
       value: 
-      objectReference: {fileID: 696672376}
+      objectReference: {fileID: 923406371}
     - target: {fileID: 1917436275219012, guid: 52f64e5e05b512f4498d041bfaa7ec2c, type: 2}
       propertyPath: m_Name
       value: BoatAgent (1)

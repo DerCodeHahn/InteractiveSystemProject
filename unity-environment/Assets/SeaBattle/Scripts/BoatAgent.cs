@@ -7,11 +7,11 @@ public class BoatAgent : Agent
 {
     private SeaManager seaManager;
 
-    private float speed = 100;
+    private float speed = 250;
 
     [SerializeField]
     private GameObject canonBall;
-    private float canonBallSpeed = 15000.0f;
+    private float canonBallSpeed = 30000.0f;
 
     private float ShootingSpeed = 4f;
     private float shootTimer = 0;
@@ -35,12 +35,19 @@ public class BoatAgent : Agent
         if(direction != Vector3.zero)
             transform.forward = direction;
         float shootDirection = vectorAction[2];
+
+        if(shootDirection < 0 )
+            shootDirection = -1;
+        else if(shootDirection > 0)
+            shootDirection = 1;
+
         if(shootDirection != 0 && shootTimer >= 1/ShootingSpeed)
         {
+            Debug.Log(shootDirection);
             GameObject ccc = Instantiate(canonBall, transform.position, Quaternion.identity);
-			ccc.GetComponent<Rigidbody>().AddForce(transform.right * shootDirection * canonBallSpeed* Time.deltaTime);
+			ccc.GetComponent<Rigidbody>().AddForce(transform.right * shootDirection * Time.deltaTime * canonBallSpeed);
             ccc.GetComponent<BallOwner>().BoatAgent = this;
-            
+
             seaManager.CannonBalls.Add(ccc);
             Physics.IgnoreCollision(GetComponent<Collider>(), ccc.GetComponent<Collider>());
             Destroy(ccc,0.5f);
