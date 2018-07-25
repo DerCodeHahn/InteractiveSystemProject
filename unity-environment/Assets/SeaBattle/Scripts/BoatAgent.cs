@@ -43,7 +43,6 @@ public class BoatAgent : Agent
 
         if(shootDirection != 0 && shootTimer >= 1/ShootingSpeed)
         {
-            Debug.Log(shootDirection);
             GameObject ccc = Instantiate(canonBall, transform.position, Quaternion.identity);
 			ccc.GetComponent<Rigidbody>().AddForce(transform.right * shootDirection * Time.deltaTime * canonBallSpeed);
             ccc.GetComponent<BallOwner>().BoatAgent = this;
@@ -87,7 +86,7 @@ public class BoatAgent : Agent
         if(col.gameObject.tag == "ball"){
             Destroy(col.gameObject);
             SetReward(0);
-            seaManager.GetOther(this).AddReward(0.1f);
+            seaManager.GetOther(this).SetReward(1f);
             seaManager.GetOther(this).score++;
             seaManager.Reset();
         }

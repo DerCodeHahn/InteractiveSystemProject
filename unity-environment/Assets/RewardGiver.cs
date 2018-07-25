@@ -6,12 +6,12 @@ public class RewardGiver : MonoBehaviour {
 	public float reward;
 	void OnTriggerEnter(Collider col)
 	{
-		BoatAgent ba = col.GetComponent<BoatAgent>();
+		BallOwner ba = col.GetComponent<BallOwner>();
 		if(ba != null)
 		{
-			if(ba != GetComponentInParent<BoatAgent>())
+			if(ba.BoatAgent != GetComponentInParent<BoatAgent>())
 			{
-				ba.AddReward(reward);
+				ba.BoatAgent.AddReward(reward);
 			}
 		}
 	}
