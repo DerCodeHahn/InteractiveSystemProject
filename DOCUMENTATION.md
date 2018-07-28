@@ -83,7 +83,7 @@ Ein Brain ist für den Entscheidungsprozess zuständig. Das Brain entscheidet an
 
 * External - Zum trainieren von Agents (zum Beispiel via Python)
 * Internal - Verwenden eines trainierten Models
-* Heuristic - Hartkodierte Logik (klassicher Ansatz, kein Machine Learning)
+* Heuristic - Hartkodierte Logik (klassischer Ansatz, kein Machine Learning)
 * Player - Menschlicher Spieler (zum Beispiel um den Agent zu testen)
 
 ### Academy
@@ -95,27 +95,31 @@ Eine Academy orchestriert alle Agents und Brains einer Unity-Szene. Jede Szene, 
 
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
-| Typ     | Beschreibung                         |
-|---------|--------------------------------------|
-| Vector2 | Richtung zum Schiff                  |
-| Float   | Entfernung zum Schiff                |
-| Vector2 | Bewegungsrichtung des Schiffs        |
-| Vector2 | Richtung der Nächsten Kanonenkugel   |
-| Float   | Entfernung der nächsten Kanonenkugel |
-| Vector2 | Bewegungsrichtung der Kanonenkugel   |
+Für den Observation Space (die Dinge, die ein Agent beobachten kann) wurden folgende Attribute gewählt:
+| Typ       | Beschreibung                         |
+|-----------|--------------------------------------|
+| `Vector2` | Richtung zum Schiff                  |
+| `Float`   | Entfernung zum Schiff                |
+| `Vector2` | Bewegungsrichtung des Schiffs        |
+| `Vector2` | Richtung der Nächsten Kanonenkugel   |
+| `Float`   | Entfernung der nächsten Kanonenkugel |
+| `Vector2` | Bewegungsrichtung der Kanonenkugel   |
 
 ## Action Space
-3-Dynamisch:
-* Horizontal (W , S)
-* Vertical (A, D)
-* Shoot (C, V)
+Der Action Space definiert die Aktionen, die ein Brain einem Agent als Entscheidung zurück geben kann. Folgende Actions wurden definiert:
+* Horizontales Fahren `(W , S)`
+* Vertikales Fahren `(A, D)`
+* Schießen einer Kanonenkugel aus dem linken oder rechten Schiffsbug `(C, V)`
 
 ## Belohnungsfunktionen
 ![Belohnungsfunktion](img/rewardfunction.png "Belohnungsfunktion")
-
-* Töten des Gegners!
-* Schüsse die knapp daneben gehen
-* Wand treffen -= 0.01
+Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent gegebene Entscheidung war. Es wurden drei Belohnungsfunktionen definiert:
+| Aktion                                                            | Belohnungswert |
+|-------------------------------------------------------------------|---------------:|
+| Treffen des Gegners                                               |           =1.0 |
+| Abgeschossene Kanonenkugel verfehlt Ziel knapp (äußere Near-Area) |          +0.01 |
+| Abgeschossene Kanonenkugel verfehlt Ziel knapp (innere Near-Area) |           +0.1 |
+| Schiff fährt gegen eine Wand                                      |          -0.01 |
 
 ## Ergebnisse
 
