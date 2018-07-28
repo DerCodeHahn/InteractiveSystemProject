@@ -96,6 +96,7 @@ Eine Academy orchestriert alle Agents und Brains einer Unity-Szene. Jede Szene, 
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
 Für den Observation Space (die Dinge, die ein Agent beobachten kann) wurden folgende Attribute gewählt:
+
 | Typ       | Beschreibung                         |
 |-----------|--------------------------------------|
 | `Vector2` | Richtung zum Schiff                  |
@@ -114,6 +115,7 @@ Der Action Space definiert die Aktionen, die ein Brain einem Agent als Entscheid
 ## Belohnungsfunktionen
 ![Belohnungsfunktion](img/rewardfunction.png "Belohnungsfunktion")
 Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent gegebene Entscheidung war. Es wurden drei Belohnungsfunktionen definiert:
+
 | Aktion                                                            | Belohnungswert |
 |-------------------------------------------------------------------|---------------:|
 | Treffen des Gegners                                               |           =1.0 |
