@@ -76,7 +76,7 @@ Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
 | Typ     | Beschreibung                         |
-|---------|--------------------------------------|
+| ------- | ------------------------------------ |
 | Vector2 | Richtung zum Schiff                  |
 | Float   | Entfernung zum Schiff                |
 | Vector2 | Bewegungsrichtung des Schiffs        |
@@ -142,5 +142,5 @@ Noch nicht geschafft mit einem KI-Agent die Heuristic zu besiegen.
 
 # Fazit<a name="conclusion"></a>
 * Heuristik Eignet sich gut um Observation Space und Action Space zu Evaluieren
-* --load lässt Training weiter laufen
+* `--load` lässt Training weiter laufen
 * Unity-ML Agents leider noch im preview mode
