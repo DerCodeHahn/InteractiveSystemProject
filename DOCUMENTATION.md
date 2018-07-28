@@ -66,19 +66,81 @@ Die benötigten Python-Pakete sind in der `requirements.txt` im Unterverzeichnis
 ![SeaBrawl Remake in Unity aus der Vogelperspektive](img/seabrawl-top.png "SeaBrawl Remake in Unity aus der Vogelperspektive")  
 Nach eingehender Sichtung der Implementierung des Spiels Sea Brawl wurde schnell klar, das eine Anpassung des Spieles zu aufwendig wäre. Infolgedessen wurde das Grundprinzip des Spiels neu implementiert. Das Spiel besteht aus zwei Schiffen, die jeweils an der rechten und linken Seite einen Kanonenbug besitzen. Aus diesen können unabhängig von einander Kanonen abgefeuert werden. Die Schiffe befahren einen abgegrenzten Bereich, der Wasser darstellen soll. Bei der neu-Implementierung wurde von vornhinein darauf geachtet, dass das Spiel zu Unity ML-Agents kompatibel ist. Auf aufwendige grafische Effekte wurde zu gunsten der Zielerfüllung des Projekts verzichtet.
 
-## Near-Area der Schiffe
+### Near-Area der Schiffe
 <img src="img/neararea1.png" alt="Nahe Near-Area" title="Nahe Near-Area" width=440><img src="img/neararea2.png" alt="Weite Near-Area" title="Weite Near-Area" width=440px>  
 Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei Near-Areas erweitert. Dies sind definierte Bereiche, die sich kreisförmig um die Schiffe bilden. Jedes Schiff hat je einen kleinen und einer weitläufigeren Bereich um seinen Körper. Diese Bereiche sind im späteren Verlauf für die Berechnung von Belohnungen von Nöten. So kann berechnet werdem, ob ein Kanonenschuss eines Spielers in die Nähe des gegenerischen Schiffs gelangt. Die zwei Bereiche wurden definiert, um eine Abstufung zu erreichen (in der Nähe und sehr nah). Für den Betrachter sind die Near-Areas nicht sichtbar.
 
 ## Aufsetzen der Lernumgebung
-![Learning Environment](docs/images/learning_environment.png "Learning Environment")
+![Learning Environment](docs/images/learning_environment.png "Learning Environment")  
 
-## Implementierung
+## Observation Space
+![Observation Space](img/ObservationSpace.png "Observation Space")  
+| Typ     | Beschreibung                         |
+|---------|--------------------------------------|
+| Vector2 | Richtung zum Schiff                  |
+| Float   | Entfernung zum Schiff                |
+| Vector2 | Bewegungsrichtung des Schiffs        |
+| Vector2 | Richtung der Nächsten Kanonenkugel   |
+| Float   | Entfernung der nächsten Kanonenkugel |
+| Vector2 | Bewegungsrichtung der Kanonenkugel   |
+
+## Action Space
+3-Dynamisch:
+* Horizontal (W , S)
+* Vertical (A, D)
+* Shoot (C, V)
 
 ## Belohnungsfunktionen
+![Belohnungsfunktion](img/rewardfunction.png "Belohnungsfunktion")
+
+* Töten des Gegners!
+* Schüsse die knapp daneben gehen
+* Wand treffen -= 0.01
 
 ## Ergebnisse
 
+### Wie es aussehen sollte
+![Beispielhafte Graphen aus Tensorboard](docs/images/mlagents-TensorBoard.png "Beispielhafte Graphen aus Tensorboard")  
+
+### Extern vs extern mit einem gemeinsamen Brain
+![Graphen aus Tensorboard](img/Extern-vs-Extern-1-Brain.png "Graphen aus Tensorboard")  
+
+### Extern vs extern mit einem gemeinsamen Brain (Nachttraining)
+![Graphen aus Tensorboard](img/Extern-vs-Extern-1-Brain-Nightly.png "Graphen aus Tensorboard")  
+
+### Extern vs extern mit je einem Brain
+![Graphen aus Tensorboard](img/Extern-vs-Extern-2-Brain.png "Graphen aus Tensorboard")  
+
+### Sonderfälle
+![Im Kreis fahrende Schiffe](img/learning.gif "Im Kreis fahrende Schiffe")  
+
+### Training gegen eine Heuristik
+
+#### Funktionen der Heuristik
+1. Ausweichen
+2. Schießen
+3. Verfolgen
+
+→ Sehr stark  
+Noch nicht geschafft mit einem KI-Agent die Heuristic zu besiegen.
+
+#### Ergebnisse gegen die Heuristik
+| Gegner                                       | Ergebnis (win/loss/draw) |
+|----------------------------------------------|--------------------------|
+| External vs External 1 Brain (20 Min)        | 38-151-11                |
+| External vs External 2 Brain (20 Min) Brain1 | 41-149-10                |
+| External vs External 2 Brain (20 Min) Brain2 | 26-153-21                |
+| Spieler                                      | 33-153-14                |
+| IL Internal (20 Min)                         | 34-157-9                 |
+| External 1 Night Learn x16 (6 hours)         | 60-140-0                 |
+
 # Ausblick<a name="outlook"></a>
+* Imitation Learning gegen die Heuristic
+* External Learning  gegen die Heuristic
+* Längere Learn-Sessions
+* Hyperparameter
 
 # Fazit<a name="conclusion"></a>
+* Heuristik Eignet sich gut um Observation Space und Action Space zu Evaluieren
+* --load lässt Training weiter laufen
+* Unity-ML Agents leider noch im preview mode
