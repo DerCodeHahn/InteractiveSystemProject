@@ -114,7 +114,7 @@ Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei
 ### Sonderfälle
 ![Im Kreis fahrende Schiffe](img/learning.gif "Im Kreis fahrende Schiffe")  
 
-### Training gegen eine Heuristik
+### Ergebnisse gegen eine Heuristik
 
 #### Funktionen der Heuristik
 1. Ausweichen
