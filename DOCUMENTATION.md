@@ -76,7 +76,7 @@ Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
 | Typ     | Beschreibung                         |
-| ------- | ------------------------------------ |
+|---------|--------------------------------------|
 | Vector2 | Richtung zum Schiff                  |
 | Float   | Entfernung zum Schiff                |
 | Vector2 | Bewegungsrichtung des Schiffs        |
