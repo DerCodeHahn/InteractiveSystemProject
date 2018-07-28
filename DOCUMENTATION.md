@@ -4,11 +4,8 @@ Timo Raschke
 Khaled Reguieg
 
 # Inhaltsverzeichnis
-1. [Projektbeschreibung](#desc)
-2. [Projektziele](#goals)
-3. [Projektverlauf](#runnning)
-4. [Ausblick](#outlook)
-5. [Fazit](#conclusion)
+<!-- toc -->
+
 
 # Projektbeschreibung<a name="desc"></a>
 Das Projektteam hat sich darauf verständigt, ein bestehendes Computerspiel mittels Machine Learning um eine intelligente künstliche Intelligenz zu erweitern. Zum Einsatz kommt die Technik *Unity Machine Learning Agents* (kurz ML-Agents) der Unity Engine.
@@ -70,8 +67,31 @@ Nach eingehender Sichtung der Implementierung des Spiels Sea Brawl wurde schnell
 <img src="img/neararea1.png" alt="Nahe Near-Area" title="Nahe Near-Area" width=440><img src="img/neararea2.png" alt="Weite Near-Area" title="Weite Near-Area" width=440px>  
 Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei Near-Areas erweitert. Dies sind definierte Bereiche, die sich kreisförmig um die Schiffe bilden. Jedes Schiff hat je einen kleinen und einer weitläufigeren Bereich um seinen Körper. Diese Bereiche sind im späteren Verlauf für die Berechnung von Belohnungen von Nöten. So kann berechnet werdem, ob ein Kanonenschuss eines Spielers in die Nähe des gegenerischen Schiffs gelangt. Die zwei Bereiche wurden definiert, um eine Abstufung zu erreichen (in der Nähe und sehr nah). Für den Betrachter sind die Near-Areas nicht sichtbar.
 
-## Aufsetzen der Lernumgebung
+## Learning Environment
 ![Learning Environment](docs/images/learning_environment.png "Learning Environment")  
+In Unity ist eine Learning Environment (dt. Lernumgebung) die Grundvorraussetzung, um mit ML-Agents arbeiten zu können. Grundlegend wird eine Learning Environment als eine Applikation beschrieben, die auf der Unity Engine fußt. Demzufolge ist SeaBrawl ebenfalls eine Learning Environment. Weitere Bestandteile sind die Academy, Brains und Agents. Diese werden im Folgenden näher erläutert.
+
+### Agents
+Ein Agent beobachtet seine Umwelt und kann auf Grundlage dieser Beobachtungen den besten Weg zu einer Lösung finden. Ein Agent muss mit einem Brain verbunden sein und gibt seine Beobachtungen an dieses weiter Er erhält von diesem eine Entscheidung zurück. In ML-Agents existieren drei Möglichkeiten der Beobachtung:
+
+* Kontinuierlicher Vektor - ein Feature Vektor, der aus einem Array von Zahlen besteht
+* Diskreter Vektor - ein Index in einer Zustandstabelle (nur für sehr einfache Umgebungen)
+* Visuelle Beobachtungen - ein oder mehrere Kamerabilder
+
+### Brains
+Ein Brain ist für den Entscheidungsprozess zuständig. Das Brain entscheidet anhand der Beobachtungen eines Agents und gibt diese Entscheidung an ihn zurück. Ein Brain kann von einem oder mehreren Agents verwendet werden. In ML-Agents existieren vier Typen von Brains:
+
+* External - Zum trainieren von Agents (zum Beispiel via Python)
+* Internal - Verwenden eines trainierten Models
+* Heuristic - Hartkodierte Logik (klassicher Ansatz, kein Machine Learning)
+* Player - Menschlicher Spieler (zum Beispiel um den Agent zu testen)
+
+### Academy
+Eine Academy orchestriert alle Agents und Brains einer Unity-Szene. Jede Szene, die Agents enthält muss zwingend eine Academy besitzen. Eine Academy wird für folgende Funktionen verwendet:
+
+* Initialisieren der Umgebung nachdem die Szene geladen wurde
+* Zurücksetzen der Umgebung
+* Verändern von Dingen in der Umgebung nach jeden Simulationsschritt
 
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
