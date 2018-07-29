@@ -142,7 +142,7 @@ Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent
 An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit, um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach XX Sekunden unentschieden endet und die Reset-Funktion aufgerufen wird.
 
 ### Ergebnisse gegen eine Heuristik
-Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen perfekten Spieler dar und soll sehr schwer zu Besiegen sein.
+Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen fast perfekten Spieler dar und soll sehr schwer zu Besiegen sein. Eine Heuristik bietet sich gut für die Valiedierung an, da sie immer konstante Ergebnisse liefert.
 
 #### Funktionen der Heuristik
 Die implementierte Heuristik bietet insgesamt drei verschiedene Fähigkeiten:
