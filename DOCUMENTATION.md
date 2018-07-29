@@ -127,12 +127,14 @@ Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent
 
 ### Wie es aussehen sollte
 ![Beispielhafte Graphen aus Tensorboard](docs/images/mlagents-TensorBoard.png "Beispielhafte Graphen aus Tensorboard")  
-
+Die Graphig zeigt ein Beispielhaften verlauf an dem ein gutes Trainingssenario gemessen werden kann. Der erste Graph Lesson zeigt beim curriculum training den Fortschritt an, welcher für unser Training nicht genutzt wurde. Der Graph des Cumulative Reward ist die durchschnittliche Belohnung über alle Angents in einer Epoche. Die Episodenlänge sollte bei uns mit der Zeit, anders als in diesem Beispiel hier abnehmen da die beiden Agents wissen sollten was sie tun und nicht beide in irgend einer Ecke fest hängen sollten.
 ### Extern vs extern mit einem gemeinsamen Brain
 ![Graphen aus Tensorboard](img/Extern-vs-Extern-1-Brain.png "Graphen aus Tensorboard")  
+Hier ist gut zu sehen wie mit vorranschreitendem Training die Graphen von cumulative_reward und episode_length Stabilisieren. Der Wert der Entropy, welcher die Zufälligkeit der Entscheidungen misst, nimmt auch ab. Beides deutet darauf hin, dass die beiden Agents einen Weg gefunden haben, Kurze und effiziente Spiele zu spielen. Auch wenn das Ergebnis dabei war, dass beide Agengts gleich nach Start an den nördlichen Spielfeldrand fahren und solange schießen bis der andere oder man selbst tot ist.
 
 ### Extern vs extern mit einem gemeinsamen Brain (Nachttraining)
 ![Graphen aus Tensorboard](img/Extern-vs-Extern-1-Brain-Nightly.png "Graphen aus Tensorboard")  
+Dies war eine Trainingssession von etwa 6h. Leider war es uns nicht mehr möglich den wahrscheinlich interressantesten Stand des Lernprozesses zu laden. Die Standarteinstellung welche wir nicht geändert haben speichert nur die letzten 5 Checkpoints. Hätten wir diese geändert könnten wir das Verhalten analysieren was zu dem Höhepunkt im Graphen der cumulative_reward geführt hat. Warum hier der Graph der learning_rate so Fehlerhaft aussieht konnte bis zum jetztigen Zeitpunkt nicht geklärt werden.
 
 ### Extern vs extern mit je einem Brain
 ![Graphen aus Tensorboard](img/Extern-vs-Extern-2-Brain.png "Graphen aus Tensorboard")  
