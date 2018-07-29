@@ -4,8 +4,41 @@ Timo Raschke
 Khaled Reguieg
 
 # Inhaltsverzeichnis
+
 <!-- toc -->
 
+- [Projektbeschreibung](#projektbeschreibung)
+  * [Unity Machine Learning Agents](#unity-machine-learning-agents)
+  * [Beschreibung des Spiels](#beschreibung-des-spiels)
+- [Projektziele](#projektziele)
+  * [Minimal Viable Product](#minimal-viable-product)
+  * [Zusammenfassung der Aufgaben](#zusammenfassung-der-aufgaben)
+- [Projektverlauf](#projektverlauf)
+  * [Entwicklungsumgebung](#entwicklungsumgebung)
+    + [Installation](#installation)
+  * [Anpassung von Sea Brawl](#anpassung-von-sea-brawl)
+    + [Near-Area der Schiffe](#near-area-der-schiffe)
+  * [Learning Environment](#learning-environment)
+    + [Agents](#agents)
+    + [Brains](#brains)
+    + [Academy](#academy)
+  * [Observation Space](#observation-space)
+  * [Action Space](#action-space)
+  * [Belohnungsfunktionen](#belohnungsfunktionen)
+  * [Ergebnisse](#ergebnisse)
+    + [Wie es aussehen sollte](#wie-es-aussehen-sollte)
+    + [Extern vs extern mit einem gemeinsamen Brain](#extern-vs-extern-mit-einem-gemeinsamen-brain)
+    + [Extern vs extern mit einem gemeinsamen Brain (Nachttraining)](#extern-vs-extern-mit-einem-gemeinsamen-brain-nachttraining)
+    + [Extern vs extern mit je einem Brain](#extern-vs-extern-mit-je-einem-brain)
+    + [Sonderfälle](#sonderfalle)
+    + [Ergebnisse gegen eine Heuristik](#ergebnisse-gegen-eine-heuristik)
+      - [Funktionen der Heuristik](#funktionen-der-heuristik)
+      - [Ergebnisse gegen die Heuristik](#ergebnisse-gegen-die-heuristik)
+      - [Interaktion mit der Community & Bug Hunting](#interaktion-mit-der-community--bug-hunting)
+- [Ausblick](#ausblick)
+- [Fazit](#fazit)
+
+<!-- tocstop -->
 
 # Projektbeschreibung
 Das Projektteam hat sich darauf verständigt, ein bestehendes Computerspiel mittels Machine Learning, um eine intelligente künstliche Intelligenz zu erweitern. Zum Einsatz kommen die Funktionen des Packets *Unity Machine Learning Agents* (kurz ML-Agents) der Unity Engine.
