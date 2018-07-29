@@ -18,7 +18,7 @@ Unity Machine Learning Agents ist ein quellenoffenes Plugin für Unity. Es stell
 
 Eigene Ansätze können mittels der bereitgestellten Python-API realisiert werden.  
 ML-Agents beinhaltet zusätzlich Implementierung von state-of-the-art Algorithmen, basierend auf TensorFlow.  
-Mit Hilfe eines angelernten Agents können zum Beispiel Aktionen eines Nicht-Spieler-Charakters (eng. NPC) realisiert werden. Weitere Verwendungsmöglichkeiten sind automatisiertes Testen (Schwerigkeit der Level, Härte der Gegner, ... ) oder das Testen von Änderungen im Design des Spiels.
+Mit Hilfe eines angelernten Agents können zum Beispiel Aktionen eines Nicht-Spieler-Charakters (eng. NPC) realisiert werden. Weitere Verwendungsmöglichkeiten sind automatisiertes Testen (Schwierigkeit der Level, Härte der Gegner, ... ) oder das Testen von Änderungen im Design des Spiels.
 
 ## Beschreibung des Spiels
 ![Sea Brawl Logo](img/SeaBrawl.png "Sea Brawl")  
@@ -142,7 +142,7 @@ Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent
 An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit, um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach XX Sekunden unentschieden endet und die Reset-Funktion aufgerufen wird.
 
 ### Ergebnisse gegen eine Heuristik
-Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen fast perfekten Spieler dar und soll sehr schwer zu Besiegen sein. Eine Heuristik bietet sich gut für die Valiedierung an, da sie immer konstante Ergebnisse liefert.
+Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen fast perfekten Spieler dar und soll sehr schwer zu Besiegen sein. Eine Heuristik bietet sich gut für die Validierung an, da sie immer konstante Ergebnisse liefert.
 
 #### Funktionen der Heuristik
 Die implementierte Heuristik bietet insgesamt drei verschiedene Fähigkeiten:
