@@ -8,35 +8,35 @@ Khaled Reguieg
 
 
 # Projektbeschreibung
-Das Projektteam hat sich darauf verständigt, ein bestehendes Computerspiel mittels Machine Learning um eine intelligente künstliche Intelligenz zu erweitern. Zum Einsatz kommt die Technik *Unity Machine Learning Agents* (kurz ML-Agents) der Unity Engine.
+Das Projektteam hat sich darauf verständigt, ein bestehendes Computerspiel mittels Machine Learning, um eine intelligente künstliche Intelligenz zu erweitern. Zum Einsatz kommen die Funktionen des Packets *Unity Machine Learning Agents* (kurz ML-Agents) der Unity Engine.
 
 ## Unity Machine Learning Agents
 Unity Machine Learning Agents ist ein quellenoffenes Plugin für Unity. Es stellt Spielen und Simulationen eine Trainingsumgebung für intelligente Agenten zu verfügung. Dabei kommen verschiedene Ansätze des machinellen Lernens zu Einsatz, darunter unter anderem:
 
 * Reinforcement learning
-* imitation learning
+* Imitation learning
 
 Eigene Ansätze können mittels der bereitgestellten Python-API realisiert werden.  
-ML-Agents beinhaltet zusätzlich Implementierung von state-of-the-art Algorithmen, basierend aus TensorFlow.  
-Mit Hilfe eines angelernten Agents können zum Beispiel Aktionen eines Nicht-Spieler-Charakters (eng. NPC) realisiert werden. Weitere verwendungsmöglichkeiten sind automatisiertes Testen oder das Testen von Änderungen im Design des Spiels.
+ML-Agents beinhaltet zusätzlich Implementierung von state-of-the-art Algorithmen, basierend auf TensorFlow.  
+Mit Hilfe eines angelernten Agents können zum Beispiel Aktionen eines Nicht-Spieler-Charakters (eng. NPC) realisiert werden. Weitere Verwendungsmöglichkeiten sind automatisiertes Testen (Schwerigkeit der Level, Härte der Gegner, ... ) oder das Testen von Änderungen im Design des Spiels.
 
 ## Beschreibung des Spiels
 ![Sea Brawl Logo](img/SeaBrawl.png "Sea Brawl")  
-Das verwendete Spiel trägt den Namen "Sea Brawl" und stammt aus einen älteren Projekt aus dem Bachelorstudium. Auf einem abgegrenzten Terrain bekämpfen sich zwei oder mehr Schiffe. Ziel ist es, mittels Kanonenschüssen die Gegner zu treffen, und selbst den Kanonenkugeln gegnerischer Schiffe auszuweichen. Da das Spiel einen Wettkampf zwischen mehreren Spielern darstellt, eignet es sich sehr gut für einen Machine Learning Ansatz. Des Weiteren ist es bereits in Unity implementiert, wodurch sich die Anpassungen in Grenzen hielten.
+Das verwendete Spiel trägt den Namen "Sea Brawl" und stammt aus einem älteren Projekt aus dem Bachelorstudium. Auf einem abgegrenzten Terrain bekämpfen sich zwei oder mehr Schiffe. Ziel ist es, mittels Kanonenschüssen die Gegner zu treffen, und selbst den Kanonenkugeln gegnerischer Schiffe auszuweichen. Da das Spiel einen Wettkampf zwischen mehreren Spielern darstellt, eignet es sich sehr gut für einen Machine Learning Ansatz. Des Weiteren ist es bereits in Unity implementiert, wodurch die Annahme bestand, dass sich die Anpassungen in Grenzen hielten. (siehe [Anpassungen von Sea Brawl](anpassung-von-sea-brawl))
 
 # Projektziele
-Ziel des Projekts ist es, mit Hilfe von Unity ML-Agents das Spiel *Sea Brawl* um einen KI-Modus zu erweitern. Dazu sollen die Möglichkeiten von Unity ML-Agents kennengelernt und die künstliche Intelligenz durch maschinelles Lernen erzeugt werden. Es gilt korrekte Belohnungsfunktionen für das vorhandene Spiel zu definieren, damit die Agenten nach dem Spielprinzip sinnvolle Aktionen ausführen. Dazu sollen die Ansätze von Reinforcement Learning und Imitation Learning verinnerlicht und angewandt werden. Dabei gilt es herauszufinden, welcher der Machine Learning Ansätze für das gegebene Spiel am besten geeignet ist.
+Ziel des Projekts ist es, mit Hilfe von Unity ML-Agents das Spiel *Sea Brawl*, um einen KI-Modus zu erweitern. Dazu sollen die Möglichkeiten von Unity ML-Agents kennengelernt und die künstliche Intelligenz durch maschinelles Lernen erzeugt werden. Es gilt korrekte Belohnungsfunktionen für das vorhandene Spiel zu definieren, damit die Agenten nach dem Spielprinzip sinnvolle Aktionen ausführen. Dazu sollen die Ansätze von Reinforcement Learning und Imitation Learning verinnerlicht und angewandt werden. Es gilt herauszufinden, welcher der Machine Learning Ansätze für das gegebene Spiel am besten geeignet ist.
 
 ## Minimal Viable Product
-Das Team hat sich im Vorfeld aus ein Minimal Viable Product (kurz MVP) verständigt, welches für einen erfolgreichen Projektabschluss auf jeden Fall erfüllt sein sollte. Dieses sieht wie folgt aus:
+Das Team hat sich im Vorfeld auf ein Minimal Viable Product (kurz MVP) verständigt, welches für einen erfolgreichen Projektabschluss auf jeden Fall erfüllt sein sollte. Dieses sieht wie folgt aus:
 
-* Zwei computergesteuerte Spieler spielen das Spiel selbstständig
-* Spieler spielen das Spiel nach dem Spielprinzip und führen sinnvolle Aktionen aus
-* Die Computerspieler sind nicht übermäßig stark, sodass kein menschlicher Spieler eine Chance hätte
-* Die Computerspieler sind nicht zu schwach, sodass ein menschlicher Gegenspieler nicht unterfordert wird.
+* Zwei computergesteuerte Agenten spielen das Spiel selbstständig.
+* Agenten spielen das Spiel nach dem Spielprinzip und führen sinnvolle Aktionen aus.
+* Die Agenten sind nicht übermäßig stark, sodass ein menschlicher Spieler eine Chance hätte.
+* Die Agents sind nicht zu schwach, sodass ein menschlicher Gegenspieler nicht unterfordert wird.
 
 ## Zusammenfassung der Aufgaben
-* Sea Brawl an Unity ML-Agents anpassen
+* Sea Brawl an Unity ML-Agents anpassen / Neu schreiben
 * Lernumgebung aufsetzen
   * Observation Space
   * Action Space
@@ -56,23 +56,23 @@ Die Entwicklungsumgebung besteht aus folgenden Komponenten:
 
 ### Installation
 Unitys ML-Agents Framework ist einfach einzurichten. Grundvorraussetzung ist das Erfüllen aller Abhängigkeiten aus der definierten [Entwicklungsumgebung](#environment).  
-Auf Grund der Abgrenzung verschiedener Projekte wird der Einsatz von Python-Umgebungen empfohlen. Für das zu betrachtende Projekt wurde eine Anaconda Umgebung auf Basis von Python 3.6 verwendet.  
-Die benötigten Python-Pakete sind in der `requirements.txt` im Unterverzeichnis `python/` des Repositories hinterlegt. Mittels `pip3 install .` können diese einfach installiert werden. Je nach Betriebssystem/Umgebungslösung kann sich der Name von `pip3` unterscheiden (z.B. nur `pip`).
+Auf Grund der Abgrenzung verschiedener Projekte wird der Einsatz der Python-Umgebungen empfohlen. Für das zu betrachtende Projekt wurde eine Anaconda Umgebung auf Basis von Python 3.6 verwendet.  
+Die benötigten Python-Pakete sind in der `requirements.txt` im Unterverzeichnis `python/` des Repositories hinterlegt. Mittels `pip3 install .` können diese einfach installiert werden. Je nach Betriebssystem/Umgebungslösung kann sich der Name von `pip3` unterscheiden (z.B. nur `pip`). Hinzukommend wurde das Paket tensorflow-gpu 1.8.0. verwendet, um auf der Grafikkarte (GeForce 950 GTX) lernen zu können.
 
 ## Anpassung von Sea Brawl
 ![SeaBrawl Remake in Unity aus der Vogelperspektive](img/seabrawl-top.png "SeaBrawl Remake in Unity aus der Vogelperspektive")  
-Nach eingehender Sichtung der Implementierung des Spiels Sea Brawl wurde schnell klar, das eine Anpassung des Spieles zu aufwendig wäre. Infolgedessen wurde das Grundprinzip des Spiels neu implementiert. Das Spiel besteht aus zwei Schiffen, die jeweils an der rechten und linken Seite einen Kanonenbug besitzen. Aus diesen können unabhängig von einander Kanonen abgefeuert werden. Die Schiffe befahren einen abgegrenzten Bereich, der Wasser darstellen soll. Bei der neu-Implementierung wurde von vornhinein darauf geachtet, dass das Spiel zu Unity ML-Agents kompatibel ist. Auf aufwendige grafische Effekte wurde zu gunsten der Zielerfüllung des Projekts verzichtet.
+Nach eingehender Sichtung der Implementierung des Spiels Sea Brawl wurde schnell klar, dass eine Anpassung des Spieles zu aufwendig wäre. Infolgedessen wurde das Grundprinzip des Spiels neu implementiert. Das Spiel besteht aus zwei Schiffen, die jeweils an der rechten und linken Seite einen Kanonenbug besitzen. Aus diesen können unabhängig von einander Kanonen abgefeuert werden. Die Schiffe befahren einen abgegrenzten Bereich, der Wasser darstellen soll. Bei der neu-Implementierung wurde von vornhinein darauf geachtet, dass das Spiel zu Unity ML-Agents kompatibel ist. Auf aufwendige grafische Effekte wurde zu gunsten der Rechen-/Lernzeit verzichtet.
 
 ### Near-Area der Schiffe
 <img src="img/neararea1.png" alt="Nahe Near-Area" title="Nahe Near-Area" width=440><img src="img/neararea2.png" alt="Weite Near-Area" title="Weite Near-Area" width=440px>  
-Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei Near-Areas erweitert. Dies sind definierte Bereiche, die sich kreisförmig um die Schiffe bilden. Jedes Schiff hat je einen kleinen und einer weitläufigeren Bereich um seinen Körper. Diese Bereiche sind im späteren Verlauf für die Berechnung von Belohnungen von Nöten. So kann berechnet werdem, ob ein Kanonenschuss eines Spielers in die Nähe des gegenerischen Schiffs gelangt. Die zwei Bereiche wurden definiert, um eine Abstufung zu erreichen (in der Nähe und sehr nah). Für den Betrachter sind die Near-Areas nicht sichtbar.
+Die Schiffe wurden zusätzlich zu den zuvor genannten Funktionen um jeweils zwei Near-Areas-Collider erweitert. Dies sind definierte Bereiche, die sich kreisförmig um die Schiffe bilden. Jedes Schiff hat je einen kleinen und einen weitläufigeren Bereich um seinen Körper. Diese Bereiche sind im späteren Verlauf für die Berechnung von Belohnungen von Nöten. So kann berechnet werden, ob ein Kanonenschuss eines Spielers in die Nähe des gegenerischen Schiffs gelangt. Die zwei Bereiche wurden definiert, um eine Abstufung der Belohnung zu erreichen (in der Nähe und sehr nah). Für den Betrachter sind die Near-Areas nicht sichtbar.
 
 ## Learning Environment
 ![Learning Environment](docs/images/learning_environment.png "Learning Environment")  
 In Unity ist eine Learning Environment (dt. Lernumgebung) die Grundvorraussetzung, um mit ML-Agents arbeiten zu können. Grundlegend wird eine Learning Environment als eine Applikation beschrieben, die auf der Unity Engine fußt. Demzufolge ist SeaBrawl ebenfalls eine Learning Environment. Weitere Bestandteile sind die Academy, Brains und Agents. Diese werden im Folgenden näher erläutert.
 
 ### Agents
-Ein Agent beobachtet seine Umwelt und kann auf Grundlage dieser Beobachtungen den besten Weg zu einer Lösung finden. Ein Agent muss mit einem Brain verbunden sein und gibt seine Beobachtungen an dieses weiter Er erhält von diesem eine Entscheidung zurück. In ML-Agents existieren drei Möglichkeiten der Beobachtung:
+Ein Agent beobachtet seine Umwelt und kann auf Grundlage dieser Beobachtungen den besten Weg zu einer Lösung finden. Ein Agent muss mit einem Brain verbunden sein und gibt seine Beobachtungen an dieses weiter. Er erhält von diesem eine Entscheidung zurück. In ML-Agents existieren drei Möglichkeiten der Beobachtung:
 
 * Kontinuierlicher Vektor - ein Feature Vektor, der aus einem Array von Zahlen besteht
 * Diskreter Vektor - ein Index in einer Zustandstabelle (nur für sehr einfache Umgebungen)
@@ -84,14 +84,14 @@ Ein Brain ist für den Entscheidungsprozess zuständig. Das Brain entscheidet an
 * External - Zum trainieren von Agents (zum Beispiel via Python)
 * Internal - Verwenden eines trainierten Models
 * Heuristic - Hartkodierte Logik (klassischer Ansatz, kein Machine Learning)
-* Player - Menschlicher Spieler (zum Beispiel um den Agent zu testen)
+* Player - Menschlicher Spieler (zum Beispiel, um den Agent zu testen, oder als Grundlage für das Imitation Learning)
 
 ### Academy
-Eine Academy orchestriert alle Agents und Brains einer Unity-Szene. Jede Szene, die Agents enthält muss zwingend eine Academy besitzen. Eine Academy wird für folgende Funktionen verwendet:
+Eine Academy orchestriert alle Agents und Brains einer Unity-Szene. Jede Szene, die Agents enthält, muss zwingend eine Academy besitzen. Eine Academy wird für folgende Funktionen verwendet:
 
 * Initialisieren der Umgebung nachdem die Szene geladen wurde
 * Zurücksetzen der Umgebung
-* Verändern von Dingen in der Umgebung nach jeden Simulationsschritt
+* Verändern von Dingen in der Umgebung nach jeden Simulationsschritt (Reset-Function)
 
 ## Observation Space
 ![Observation Space](img/ObservationSpace.png "Observation Space")  
@@ -139,7 +139,7 @@ Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent
 
 ### Sonderfälle
 ![Im Kreis fahrende Schiffe](img/learning.gif "Im Kreis fahrende Schiffe")  
-An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach XX Sekunden unentschieden endet.
+An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit, um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach XX Sekunden unentschieden endet und die Reset-Funktion aufgerufen wird.
 
 ### Ergebnisse gegen eine Heuristik
 Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen perfekten Spieler dar und soll sehr schwer zu Besiegen sein.
@@ -164,6 +164,9 @@ Die angelernten Agents wurden mit verschiedenen Brains gegen das heuristische Br
 
 Es ist Anhand der Ergebnisse klar erkennbar, dass die angelernten Agents gegen einen Agent mit heuristischem Brain kaum eine Chance haben. Aber auch ein menschlicher Spieler ist gegen die Heuristik chancenlos.
 
+#### Interaktion mit der Community & Bug Hunting
+Das Unity-ML Repository wird aktiv gepflegt und bietet die Möglichkeit der Interaktion mit der Community, welche wir auch Genutzt haben. So haben wir Beispielsweise ein [Issue](https://github.com/Unity-Technologies/ml-agents/issues/1008) verfasst und versucht bei der Beantwortung anderer [Issues](https://github.com/Unity-Technologies/ml-agents/issues/980) zu helfen.
+
 # Ausblick
 Für die Zukunft sollen auf jeden Fall die Lernsessions der Agents deutlich verlängert werden. Da dieses Projekt einen sehr begrenzten Zeitrahmen bot und die verfügbare Hardware nicht unbedingt für Machine Learning optimiert wurde, könnten bei entsprechender Hardware und längeren Lernsessions bessere Ergebnisse erzielt werden. An Beispielen wie dem angesprochenen Sonderfall ist klarer Optimierungsbedarf in der Belohnungsfunktion erkennbar.
 
@@ -173,4 +176,4 @@ Für die Zukunft sollen auf jeden Fall die Lernsessions der Agents deutlich verl
 * Hyperparameter
 
 # Fazit
-Das Projekt wurde erfolgreich beendet und das Minimal Viable Product erfüllt. Das Projekt bot einen tiefen Einblick in die mechanismen des Machine Learnings und Unitys Verständnis von diesem. Obwohl erst ziemlich zum Ende eine Heuristik erstellt wurde, konnte diese dennoch dazu verwendet werden, um Observation, Action Space und die Belohnungsfunktion zu evaluieren. Es bleibt spannend zu Beobachten, wie sich ML-Agents in Zukunft weiterentwickelt. Bisher steht das Framework noch im Status Beta.
+Das Projekt wurde erfolgreich beendet und das Minimal Viable Product erfüllt. Das Projekt bot einen tiefen Einblick in die Mechanismen des Machine Learnings und Unitys Verständnis von diesem. Obwohl erst ziemlich zum Ende eine Heuristik erstellt wurde, konnte diese dennoch dazu verwendet werden, um Observation-, Action-Space und die Belohnungsfunktion zu evaluieren. Es bleibt spannend zu Beobachten, wie sich ML-Agents in Zukunft weiterentwickelt. Bisher steht das Framework noch im Beta-Status 'preview'.
