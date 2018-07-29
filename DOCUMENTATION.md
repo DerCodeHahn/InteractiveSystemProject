@@ -139,7 +139,8 @@ Dies war eine Trainingssession von etwa sechs Stunden. Leider war es uns nicht m
 
 ### Extern vs extern mit je einem Brain
 ![Graphen aus Tensorboard](img/Extern-vs-Extern-2-Brain.png "Graphen aus Tensorboard")  
-Besonders Interessant bei diesem Durchlauf ist der Unteschied zwischen dem Lernen auf einem oder zwei unterschiedlichen Brains. Der Orangene und der Blaue wurden dabei gegeneinander Trainiert. Im verhältniss zu der Grauen Linie(Beide Agents lernen auf ein Brain) dauern die Runden wesentlich länger, verlaufen mit weniger Belohnungen, und die Entscheidungen sind Zufälliger.
+Besonders Interessant bei diesem Durchlauf ist der Unterschied zwischen dem Lernen auf einem oder zwei unterschiedlichen Brains. Der orangefarbene und der blaue Graph wurden dabei gegeneinander Trainiert. Im Verhältnis zu der grauen Linie (beide Agents lernen auf ein Brain) dauern die Runden wesentlich länger, verlaufen mit weniger Belohnungen und die Entscheidungen sind zufälliger.
+
 ### Sonderfälle
 ![Im Kreis fahrende Schiffe](img/learning.gif "Im Kreis fahrende Schiffe")  
 An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit, um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach 1000 Schritten der Schiffe unentschieden endet und die Reset-Funktion aufgerufen wird.
