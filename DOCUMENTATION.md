@@ -7,7 +7,7 @@ Khaled Reguieg
 <!-- toc -->
 
 
-# Projektbeschreibung<a name="desc"></a>
+# Projektbeschreibung
 Das Projektteam hat sich darauf verständigt, ein bestehendes Computerspiel mittels Machine Learning um eine intelligente künstliche Intelligenz zu erweitern. Zum Einsatz kommt die Technik *Unity Machine Learning Agents* (kurz ML-Agents) der Unity Engine.
 
 ## Unity Machine Learning Agents
@@ -24,7 +24,7 @@ Mit Hilfe eines angelernten Agents können zum Beispiel Aktionen eines Nicht-Spi
 ![Sea Brawl Logo](img/SeaBrawl.png "Sea Brawl")  
 Das verwendete Spiel trägt den Namen "Sea Brawl" und stammt aus einen älteren Projekt aus dem Bachelorstudium. Auf einem abgegrenzten Terrain bekämpfen sich zwei oder mehr Schiffe. Ziel ist es, mittels Kanonenschüssen die Gegner zu treffen, und selbst den Kanonenkugeln gegnerischer Schiffe auszuweichen. Da das Spiel einen Wettkampf zwischen mehreren Spielern darstellt, eignet es sich sehr gut für einen Machine Learning Ansatz. Des Weiteren ist es bereits in Unity implementiert, wodurch sich die Anpassungen in Grenzen hielten.
 
-# Projektziele<a name="goals"></a>
+# Projektziele
 Ziel des Projekts ist es, mit Hilfe von Unity ML-Agents das Spiel *Sea Brawl* um einen KI-Modus zu erweitern. Dazu sollen die Möglichkeiten von Unity ML-Agents kennengelernt und die künstliche Intelligenz durch maschinelles Lernen erzeugt werden. Es gilt korrekte Belohnungsfunktionen für das vorhandene Spiel zu definieren, damit die Agenten nach dem Spielprinzip sinnvolle Aktionen ausführen. Dazu sollen die Ansätze von Reinforcement Learning und Imitation Learning verinnerlicht und angewandt werden. Dabei gilt es herauszufinden, welcher der Machine Learning Ansätze für das gegebene Spiel am besten geeignet ist.
 
 ## Minimal Viable Product
@@ -43,9 +43,9 @@ Das Team hat sich im Vorfeld aus ein Minimal Viable Product (kurz MVP) verständ
 * Belohnungsfunktion definieren
 * Hyperparameter definieren
 
-# Projektverlauf<a name="running"></a>
+# Projektverlauf
 
-## Entwicklungsumgebung<a name="environment"></a>
+## Entwicklungsumgebung
 Die Entwicklungsumgebung besteht aus folgenden Komponenten:
 
 * Windows, Mac OSX oder Linux
@@ -108,7 +108,7 @@ Für den Observation Space (die Dinge, die ein Agent beobachten kann) wurden fol
 
 ## Action Space
 Der Action Space definiert die Aktionen, die ein Brain einem Agent als Entscheidung zurück geben kann. Folgende Actions wurden definiert:
-* Horizontales Fahren `(W , S)`
+* Horizontales Fahren `(W, S)`
 * Vertikales Fahren `(A, D)`
 * Schießen einer Kanonenkugel aus dem linken oder rechten Schiffsbug `(C, V)`
 
@@ -139,19 +139,21 @@ Anhand einer Belohnungsfunktion kann ein Brain bewerten wie gut die an den Agent
 
 ### Sonderfälle
 ![Im Kreis fahrende Schiffe](img/learning.gif "Im Kreis fahrende Schiffe")  
+An dem oben abgebildeten Sonderfall kann sehr gut erkannt werden, dass die Belohnungsfunktion noch nicht perfekt ist. In diesem Trainingslauf hat das Brain als beste Möglichkeit um besonders viele Belohnungspunkte zu sammeln entschieden, dass das Fahren im Kreis mit einem bestimmten Abstand zum Gegner bei gleichzeitigem Dauerfeuer die höchste Belohnung einbringt. Die Belohnung erhält das Brain, da jeder abgefeuerte Schuss in die Near-Area des Gegners fliegt. Für diesen Sonderfall wurde die zusätzliche Regel eingeführt, dass eine Runde nach XX Sekunden unentschieden endet.
 
 ### Ergebnisse gegen eine Heuristik
+Um die Effizienz der angelernten Agents zu validieren, wurde ein heuristisches Brain implementiert. Dieses stellt einen perfekten Spieler dar und soll sehr schwer zu Besiegen sein.
 
 #### Funktionen der Heuristik
+Die implementierte Heuristik bietet insgesamt drei verschiedene Fähigkeiten:
 1. Ausweichen
 2. Schießen
 3. Verfolgen
 
-→ Sehr stark  
-Noch nicht geschafft mit einem KI-Agent die Heuristic zu besiegen.
-
 #### Ergebnisse gegen die Heuristik
-| Gegner                                       | Ergebnis (win/loss/draw) |
+Die angelernten Agents wurden mit verschiedenen Brains gegen das heuristische Brain in den Kampf geschickt. Die Ergebnisse sind in folgender Tabelle abgebildet:
+
+| Gegner                                       | Ergebnis (win-loss-draw) |
 |----------------------------------------------|--------------------------|
 | External vs External 1 Brain (20 Min)        | 38-151-11                |
 | External vs External 2 Brain (20 Min) Brain1 | 41-149-10                |
@@ -160,13 +162,15 @@ Noch nicht geschafft mit einem KI-Agent die Heuristic zu besiegen.
 | IL Internal (20 Min)                         | 34-157-9                 |
 | External 1 Night Learn x16 (6 hours)         | 60-140-0                 |
 
-# Ausblick<a name="outlook"></a>
+Es ist Anhand der Ergebnisse klar erkennbar, dass die angelernten Agents gegen einen Agent mit heuristischem Brain kaum eine Chance haben. Aber auch ein menschlicher Spieler ist gegen die Heuristik chancenlos.
+
+# Ausblick
+Für die Zukunft sollen auf jeden Fall die Lernsessions der Agents deutlich verlängert werden. Da dieses Projekt einen sehr begrenzten Zeitrahmen bot und die verfügbare Hardware nicht unbedingt für Machine Learning optimiert wurde, könnten bei entsprechender Hardware und längeren Lernsessions bessere Ergebnisse erzielt werden. An Beispielen wie dem angesprochenen Sonderfall ist klarer Optimierungsbedarf in der Belohnungsfunktion erkennbar.
+
 * Imitation Learning gegen die Heuristic
 * External Learning  gegen die Heuristic
 * Längere Learn-Sessions
 * Hyperparameter
 
-# Fazit<a name="conclusion"></a>
-* Heuristik Eignet sich gut um Observation Space und Action Space zu Evaluieren
-* `--load` lässt Training weiter laufen
-* Unity-ML Agents leider noch im preview mode
+# Fazit
+Das Projekt wurde erfolgreich beendet und das Minimal Viable Product erfüllt. Das Projekt bot einen tiefen Einblick in die mechanismen des Machine Learnings und Unitys Verständnis von diesem. Obwohl erst ziemlich zum Ende eine Heuristik erstellt wurde, konnte diese dennoch dazu verwendet werden, um Observation, Action Space und die Belohnungsfunktion zu evaluieren. Es bleibt spannend zu Beobachten, wie sich ML-Agents in Zukunft weiterentwickelt. Bisher steht das Framework noch im Status Beta.
